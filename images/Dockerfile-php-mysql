@@ -1,0 +1,11 @@
+ARG PHP_TARGET=7.4-apache
+
+FROM php:$PHP_TARGET as base
+RUN docker-php-ext-install -j$(nproc) mysqli pdo_mysql
+
+ENV PHP_INI_DIR /usr/local/etc/php
+COPY ./php_config/local.ini $PHP_INI_DIR/conf.d/
+
+RUN a2enmod headers expires rewrite
+
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer

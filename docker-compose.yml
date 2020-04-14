@@ -1,0 +1,49 @@
+version: "3.7"
+
+x-defaults:
+  network: &network
+    networks:
+      - net
+
+services:
+  php:
+    image: jmac/php:7.4-apache-mysql
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - workspace:/var/www
+    configs:
+      - source: apache-vhosts
+        target: /etc/apache2/sites-available/000-default.conf
+    <<: *network
+
+  db:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_pwd
+    volumes:
+      - data:/var/lib/mysql
+    secrets:
+      - db_pwd
+    <<: *network
+
+
+networks:
+  net:
+
+secrets:
+  db_pwd:
+    file: ./root_db_password.txt
+
+configs:
+  apache-vhosts:
+    file: ./apache/vhosts.conf
+
+volumes: 
+  workspace:
+     external: true 
+  data:
+     external: true
