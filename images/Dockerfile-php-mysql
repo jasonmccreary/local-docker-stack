@@ -9,4 +9,12 @@ COPY ./php_config/local.ini $PHP_INI_DIR/conf.d/
 
 RUN a2enmod headers expires rewrite
 
+RUN ln -s /var/www/dotfiles/.bash_profile ~/.bashrc
+RUN ln -s /var/www/dotfiles/.bash_prompt_docker ~/.bash_prompt
+RUN ln -s /var/www/dotfiles/.git_completion.bash ~/.git_completion.bash
+RUN ln -s /var/www/dotfiles/.git_prompt.sh ~/.git_prompt.sh
+RUN ln -s /var/www/dotfiles/.gitconfig ~/.gitconfig
+RUN ln -s /var/www/dotfiles/.gitignore_global ~/.gitignore_global
+
+
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
