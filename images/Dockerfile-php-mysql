@@ -2,7 +2,7 @@ ARG PHP_TARGET=7.4-apache
 
 # Install base environment
 FROM php:$PHP_TARGET as base
-RUN apt update
+RUN apt-get update
 RUN apt-get install -y wget zip unzip zlib1g-dev libzip-dev libpng-dev vim git
 RUN docker-php-ext-install -j$(nproc) mysqli pdo_mysql gd zip pcntl exif
 
