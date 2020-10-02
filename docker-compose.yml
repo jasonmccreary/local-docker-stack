@@ -7,7 +7,7 @@ x-defaults:
 
 services:
   php:
-    image: jmac/php:7.4-apache-mysql
+    image: jmac/php:7.4-apache
     ports:
       - 80:80
       - 443:443
@@ -16,6 +16,8 @@ services:
     configs:
       - source: apache-vhosts
         target: /etc/apache2/sites-available/000-default.conf
+      - source: php-ini
+        target: /usr/local/etc/php/conf.d/local.ini
     <<: *network
 
   db:
@@ -36,11 +38,13 @@ networks:
 
 secrets:
   db_pwd:
-    file: ./root_db_password.txt
+    file: ./mysql/root_password.txt
 
 configs:
   apache-vhosts:
     file: ./apache/vhosts.conf
+  php-ini:
+    file: ./php/local.ini
 
 volumes: 
   workspace:
