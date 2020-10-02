@@ -1,30 +1,30 @@
 # Local LAMP stack
 A repository containing the Docker files to build the LAMP stack which I use for local development.
 
-This is based on a [workshop given by Dana Luther](https://github.com/DanaLuther/HOD-Lemp-or-Lamp-stack). If you are interested in other setups or customizations, I defer to her. She is the master of all Docker things.
+This is based on a [workshop given by Dana Luther](https://github.com/DanaLuther/HOD-Lemp-or-Lamp-stack). If you are interested in other setups or customizations, I defer to her. She is the master of all things Docker.
 
 
 ## Install Docker Desktop
 https://www.docker.com/products/docker-desktop
 
 
-## Images you will need to download:
+## Images used:
 - php:7.4-apache
 - mysql:latest
-- composer:latest
+- composer:2
 - phpmyadmin/phpmyadmin:latest
 
-To download the images, use the `docker image` pull command:
+To pre-download the underlying images, use the `docker pull` command:
 
 ```sh
-docker image pull php:7.4-fpm
+docker pull php:7.4-apache
+docker pull mysql:latest
 ```
 
 
 ## Rebuild custom PHP image
 ```sh
-cd images/
-docker image build --no-cache -f Dockerfile-php-mysql -t jmac/php:7.4-apache-mysql --target=base . --build-arg PHP_TARGET=7.4-apache
+docker image build --no-cache -f images/Dockerfile-php-apache -t jmac/php:7.4-apache .
 ```
 
 ## Start the stack

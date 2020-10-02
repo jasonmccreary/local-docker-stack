@@ -21,7 +21,7 @@ services:
     <<: *network
 
   db:
-    image: mysql
+    image: mysql:latest
     ports:
       - 3306:3306
     environment:
