@@ -7,7 +7,7 @@ x-defaults:
 
 services:
   php:
-    image: jmac/php:7.4-apache
+    image: lamp
     ports:
       - 80:80
       - 443:443

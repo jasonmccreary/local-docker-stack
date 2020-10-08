@@ -11,7 +11,7 @@ RUN docker-php-ext-install -j$(nproc) mysqli pdo_mysql gd zip pcntl exif
 # Enable common Apache modules
 RUN a2enmod headers expires rewrite
 
-# Link local dotfiles for consistent CLI
+# Link local dotfiles for consistent CLI (optional)
 RUN ln -s /var/www/dotfiles/.bash_profile ~/.bash_profile
 RUN ln -s /var/www/dotfiles/.bash_prompt_docker ~/.bash_prompt
 RUN ln -s /var/www/dotfiles/.git_completion.bash ~/.git_completion.bash
@@ -23,5 +23,5 @@ RUN echo 'source ~/.bash_profile' >> ~/.bashrc
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
-# Set working directory to workspace
+# Set working directory to web files
 WORKDIR /var/www
