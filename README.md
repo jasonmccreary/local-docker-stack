@@ -1,7 +1,7 @@
 # Local LAMP Stack using Docker
 A repository containing the Docker files to build a LAMP stack which I use for local development on macOS.
 
-This is based on a [workshop given by Dana Luther](https://github.com/DanaLuther/HOD-Lemp-or-Lamp-stack). From that I have written a tutorial for [installing Apache, MySQL, and PHP on macOS using Docker](https://jasonmccreary.me/).
+This is based on a [workshop given by Dana Luther](https://github.com/DanaLuther/HOD-Lemp-or-Lamp-stack). From that I have written a tutorial for [installing Apache, MySQL, and PHP on macOS using Docker](https://jasonmccreary.me/articles/install-apache-php-mysql-macos-docker-local-development/).
 
 If you're just getting started with Docker, I recommend following the tutorial. Otherwise, if you are a welcome to review the notes below.
 
