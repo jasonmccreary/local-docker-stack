@@ -45,12 +45,11 @@ docker volume create workspace --opt type=none --opt device=/Users/jasonmccreary
 docker volume create data --opt type=none --opt device=/Users/jasonmccreary/data --opt o=bind
 ```
 
-## Add a generic database user
+## Granting the `dbuser` access
 Since the MySQL `data` directory is configured to persist, this only needs to be run once per initial setup.
 
 
 ```sql
-CREATE USER 'dbuser'@'%' IDENTIFIED BY 'dbpass';
 GRANT ALL PRIVILEGES ON *.* TO 'dbuser'@'%';
 ```
 
