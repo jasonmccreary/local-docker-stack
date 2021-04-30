@@ -11,7 +11,7 @@ While I use this for development on macOS, you may use this for any platform. To
 
 
 ## Images used:
-- php:7.4-apache
+- php:8.0-apache
 - mysql:latest
 - composer:2
 - phpmyadmin/phpmyadmin:latest
@@ -19,7 +19,7 @@ While I use this for development on macOS, you may use this for any platform. To
 To pre-download the underlying images, use the `docker pull` command:
 
 ```sh
-docker pull php:7.4-apache
+docker pull php:8.0-apache
 docker pull mysql:latest
 docker pull composer:2
 ```
