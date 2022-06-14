@@ -23,5 +23,7 @@ RUN echo 'source ~/.bash_profile' >> ~/.bashrc
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
+RUN composer global require friendsofphp/php-cs-fixer
+
 # Set working directory to web files
 WORKDIR /var/www
